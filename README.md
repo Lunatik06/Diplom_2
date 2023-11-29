@@ -11,3 +11,8 @@ Allure 2.24.0<br/>
 Плагин allure maven 2.10<br/>
 Rest Assured 4.4.0<br/>
 
+Для запуска тестов выполните команду:
+
+```sh
+mvn clean test
+```
