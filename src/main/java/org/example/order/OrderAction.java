@@ -9,7 +9,6 @@ import java.util.Map;
 public class OrderAction extends StellarBurgerSpec {
     static final String ORDERS_PATH = "/orders";
 
-
     @Step("Создать заказ авторизованным пользователем")
     public ValidatableResponse createOrder(String accessToken) {
         return spec()
@@ -17,7 +16,7 @@ public class OrderAction extends StellarBurgerSpec {
                 .headers(Map.of("Authorization", accessToken))
                 .when()
                 .post(ORDERS_PATH)
-                .then().log().all();
+                .then();
     }
 
     @Step("Создать заказ неавторизованным пользователем")
@@ -26,7 +25,7 @@ public class OrderAction extends StellarBurgerSpec {
                 .body(Order.orderDatas)
                 .when()
                 .post(ORDERS_PATH)
-                .then().log().all();
+                .then();
     }
 
     @Step("Создать заказ без ингредиентов неавторизованным пользователем")
@@ -34,7 +33,7 @@ public class OrderAction extends StellarBurgerSpec {
         return spec()
                 .when()
                 .post(ORDERS_PATH)
-                .then().log().all();
+                .then();
     }
 
     @Step("Создать заказ неавторизованным пользователем")
@@ -43,7 +42,7 @@ public class OrderAction extends StellarBurgerSpec {
                 .body(Order.wrongOrderDatas)
                 .when()
                 .post(ORDERS_PATH)
-                .then().log().all();
+                .then();
     }
 
     @Step("Получить список заказов авторизованным пользователем")
@@ -52,7 +51,7 @@ public class OrderAction extends StellarBurgerSpec {
                 .headers(Map.of("Authorization", accessToken))
                 .when()
                 .get(ORDERS_PATH)
-                .then().log().all();
+                .then();
     }
 
     @Step("Получить список заказов неавторизованным пользователем")
@@ -60,7 +59,6 @@ public class OrderAction extends StellarBurgerSpec {
         return spec()
                 .when()
                 .get(ORDERS_PATH)
-                .then().log().all();
+                .then();
     }
-
 }

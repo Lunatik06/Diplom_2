@@ -3,7 +3,6 @@ package org.example.user;
 import com.github.javafaker.Faker;
 
 public class UserGenerator {
-
     static Faker faker = new Faker();
 
     public static User generic() {

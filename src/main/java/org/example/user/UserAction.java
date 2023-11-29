@@ -15,7 +15,7 @@ public class UserAction extends StellarBurgerSpec {
                 .body(user)
                 .when()
                 .post(USER_PATH + "/register")
-                .then().log().all();
+                .then();
     }
 
     @Step("Авторизоваться пользователем")
@@ -24,7 +24,7 @@ public class UserAction extends StellarBurgerSpec {
                 .body(creds)
                 .when()
                 .post(USER_PATH + "/login")
-                .then().log().all();
+                .then();
     }
 
     @Step("Авторизоваться пользователем")
@@ -33,7 +33,7 @@ public class UserAction extends StellarBurgerSpec {
                 .body(user)
                 .when()
                 .post(USER_PATH + "/login")
-                .then().log().all();
+                .then();
     }
 
     @Step("Удалить пользователя")
@@ -42,7 +42,7 @@ public class UserAction extends StellarBurgerSpec {
                 .headers(Map.of("Authorization", accessToken))
                 .when()
                 .delete(USER_PATH + "/user")
-                .then().log().all();
+                .then();
     }
 
     @Step("Получить данные пользователя")
@@ -51,9 +51,8 @@ public class UserAction extends StellarBurgerSpec {
                 .headers(Map.of("Authorization", accessToken))
                 .when()
                 .get(USER_PATH + "/user")
-                .then().log().all();
+                .then();
     }
-
 
     @Step("Изменить данные пользователя с авторизацией")
     public ValidatableResponse changeWithAuth(User user, String accessToken) {
@@ -62,7 +61,7 @@ public class UserAction extends StellarBurgerSpec {
                 .headers(Map.of("Authorization", accessToken))
                 .when()
                 .patch(USER_PATH + "/user")
-                .then().log().all();
+                .then();
     }
 
     @Step("Изменить данные пользователя без авторизации")
@@ -71,8 +70,6 @@ public class UserAction extends StellarBurgerSpec {
                 .body(user)
                 .when()
                 .patch(USER_PATH + "/user")
-                .then().log().all();
+                .then();
     }
-
-
 }

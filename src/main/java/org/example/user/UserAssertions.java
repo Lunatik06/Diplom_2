@@ -8,7 +8,6 @@ import java.net.HttpURLConnection;
 import static org.hamcrest.core.Is.is;
 
 public class UserAssertions {
-
     @Step("Проверить, что создание пользователя прошло успешно")
     public String createdSuccessfully(ValidatableResponse authResponse) {
         String accessToken = authResponse
@@ -19,7 +18,6 @@ public class UserAssertions {
                 .path("accessToken");
         return accessToken;
     }
-
 
     @Step("Проверить, что авторизация прошла успешно")
     public String logedInSuccessfully(ValidatableResponse loginResponse) {
@@ -48,8 +46,6 @@ public class UserAssertions {
                 .statusCode(HttpURLConnection.HTTP_FORBIDDEN)
                 .body("success", is(false))
                 .body("message", is("User already exists"));
-        ;
-
     }
 
     @Step("Проверить, что нельзя создать пользователя без обязательных параметров")
@@ -58,9 +54,7 @@ public class UserAssertions {
                 .assertThat()
                 .statusCode(HttpURLConnection.HTTP_FORBIDDEN)
                 .body("success", is(false))
-                .body("message", is("Email, password and name are required fields"))
-        ;
-
+                .body("message", is("Email, password and name are required fields"));
     }
 
     @Step("Проверить, что нельзя авторизоватья с некорректными параметрами")
@@ -69,8 +63,7 @@ public class UserAssertions {
                 .assertThat()
                 .statusCode(HttpURLConnection.HTTP_UNAUTHORIZED)
                 .body("success", is(false))
-                .body("message", is("email or password are incorrect"))
-        ;
+                .body("message", is("email or password are incorrect"));
     }
 
     @Step("Проверить, что данные пользователя можно изменить с авторизацией")

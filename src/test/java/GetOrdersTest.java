@@ -8,7 +8,6 @@ import org.example.user.UserGenerator;
 import org.junit.Test;
 
 public class GetOrdersTest {
-
     private final UserAssertions userCheck = new UserAssertions();
     private final OrderAssertions checkOrder = new OrderAssertions();
     protected String accessToken;
@@ -40,5 +39,4 @@ public class GetOrdersTest {
         ValidatableResponse getOrderResponse = this.orderAction.getOrdersWithoutAuth();
         checkOrder.getOrderListWithoutAuth(getOrderResponse);
     }
-
 }

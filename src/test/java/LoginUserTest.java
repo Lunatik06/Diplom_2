@@ -7,7 +7,6 @@ import org.example.user.UserGenerator;
 import org.junit.Test;
 
 public class LoginUserTest {
-
     private final UserAction userAction = new UserAction();
     private final UserAssertions userCheck = new UserAssertions();
     protected String accessToken;
@@ -27,32 +26,25 @@ public class LoginUserTest {
 
         ValidatableResponse delete = userAction.delete(accessToken);
         userCheck.deletedSuccessfully(delete);
-
     }
 
     @Test
     @DisplayName("Логин с неверным email")
     public void loginUserWithWrongEmailTest() {
-
         var userWithWrongEmail = UserGenerator.withWrongEmail();
         var loginDataWithWrongEmail = Credentials.from(userWithWrongEmail);
 
         ValidatableResponse loginResponseWithWrongParam = this.userAction.login(loginDataWithWrongEmail);
         userCheck.loginWithWrongParam(loginResponseWithWrongParam);
-
     }
 
     @Test
     @DisplayName("Логин с неверным паролем")
     public void loginUserWithWrongPasswordTest() {
-
         var userWithWrongPassword = UserGenerator.withWrongPassword();
         var loginDataWithWrongPassword = Credentials.from(userWithWrongPassword);
 
         ValidatableResponse loginResponseWithWrongParam = this.userAction.login(loginDataWithWrongPassword);
         userCheck.loginWithWrongParam(loginResponseWithWrongParam);
-
     }
-
-
 }
